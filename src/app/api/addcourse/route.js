@@ -6,7 +6,7 @@ import {writeFile,mkdir} from 'fs/promises'
 import {join,dirname} from 'path'
 import { Readable } from "stream";
 
-
+export const maxDuration = 300
 export const POST = async(request) => {
     try {
         const CourseData = await request.formData();
