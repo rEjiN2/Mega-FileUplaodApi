@@ -11,7 +11,7 @@ export const POST = async(request) => {
     try {
         const CourseData = await request.formData();
         const file = CourseData.get('image');
-
+           console.log(file);
         await connect();
         const bytes = await file.arrayBuffer()
          const buffer = Buffer.from(bytes)
@@ -55,10 +55,10 @@ export const POST = async(request) => {
         
         console.log(`Uploaded to Mega: ${uploadedFile.name}`);
         console.log(`File URL: ${fileLink}`);
-        return new NextResponse("Course has been Created with file URL: " + fileLink, { status: 201 });
+        return new NextResponse(JSON.stringify(fileLink), { status: 201 });
 
     } catch (err) {
         console.log(err.message);
-        return new NextResponse("Error", { status: 500 });
+        return new NextResponse(JSON.stringify("Error"), { status: 500 });
     }
 };
